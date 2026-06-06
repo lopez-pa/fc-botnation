@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize functions
     initNavbarScroll();
     initMobileNav();
     initParticleSystem();
     initIntersectionObserver();
     initFlipCardsTouch();
     initChatbotModal();
+    initTokenStatus();
 });
 
 /* ==========================================
@@ -240,7 +240,57 @@ function initFlipCardsTouch() {
 }
 
 /* ==========================================
-   7. CHATBOT SIMULATOR MODAL
+   7. TOKEN STATUS BAR
+   ========================================== */
+function initTokenStatus() {
+    startResetCountdown();
+}
+
+function startResetCountdown() {
+    const el = document.getElementById('token-reset-value');
+    if (!el) return;
+
+    function tick() {
+        const now = new Date();
+        const midnight = new Date(Date.UTC(
+            now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1
+        ));
+        const diff = midnight - now;
+
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+
+        el.textContent = `${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+    }
+
+    tick();
+    setInterval(tick, 1000);
+}
+
+function updateTokenBar(rateLimit) {
+    const { limitTokens, remainingTokens } = rateLimit;
+    if (!limitTokens) return;
+
+    const usedTokens = limitTokens - remainingTokens;
+    const pct = Math.min((usedTokens / limitTokens) * 100, 100);
+
+    const fill = document.getElementById('token-bar-fill');
+    const numbers = document.getElementById('token-numbers');
+
+    if (!fill || !numbers) return;
+
+    fill.style.width = pct + '%';
+    fill.classList.remove('warning', 'danger');
+    if (pct >= 90) fill.classList.add('danger');
+    else if (pct >= 65) fill.classList.add('warning');
+
+    const fmt = n => n >= 1000 ? (n / 1000).toFixed(0) + 'k' : n;
+    numbers.textContent = `${fmt(usedTokens)} / ${fmt(limitTokens)} tokens`;
+}
+
+/* ==========================================
+   8. CHATBOT SIMULATOR MODAL
    ========================================== */
 function initChatbotModal() {
     const modal = document.getElementById('chatbot-modal');
@@ -344,6 +394,7 @@ function initChatbotModal() {
             const content = data.content || '';
             conversationHistory.push({ role: 'assistant', content });
             addBotMessage(content, BOT_ICON);
+            if (data.rateLimit) updateTokenBar(data.rateLimit);
 
         } catch (err) {
             typingEl.remove();

@@ -160,7 +160,14 @@ module.exports = async function handler(req, res) {
 
         const data = await groqRes.json();
         const content = data.choices?.[0]?.message?.content ?? '';
-        return res.status(200).json({ content });
+
+        const rateLimit = {
+            limitTokens:     parseInt(groqRes.headers.get('x-ratelimit-limit-tokens')     || '0'),
+            remainingTokens: parseInt(groqRes.headers.get('x-ratelimit-remaining-tokens') || '0'),
+            resetTokens:     groqRes.headers.get('x-ratelimit-reset-tokens') || ''
+        };
+
+        return res.status(200).json({ content, rateLimit });
 
     } catch (err) {
         console.error('Handler error:', err);
