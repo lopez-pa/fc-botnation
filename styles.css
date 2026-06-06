@@ -1136,6 +1136,44 @@ footer {
     50% { opacity: 0.4; }
 }
 
+.chatbot-token-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    margin-right: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    padding: 0.3rem 0.7rem;
+}
+
+.ctp-bar-track {
+    width: 60px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.ctp-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary-600), var(--primary-400));
+    border-radius: 9999px;
+    transition: width 0.6s ease, background 0.4s ease;
+}
+
+.ctp-bar-fill.warning { background: linear-gradient(90deg, #d97706, #fbbf24); }
+.ctp-bar-fill.danger  { background: linear-gradient(90deg, #dc2626, #f87171); }
+
+.ctp-reset {
+    font-size: 0.68rem;
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
 .chatbot-close {
     width: 34px;
     height: 34px;

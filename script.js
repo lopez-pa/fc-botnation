@@ -250,6 +250,8 @@ function startResetCountdown() {
     const el = document.getElementById('token-reset-value');
     if (!el) return;
 
+    const ctpEl = document.getElementById('ctp-reset-value');
+
     function tick() {
         const now = new Date();
         const midnight = new Date(Date.UTC(
@@ -261,7 +263,9 @@ function startResetCountdown() {
         const m = Math.floor((diff % 3600000) / 60000);
         const s = Math.floor((diff % 60000) / 1000);
 
-        el.textContent = `${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+        const timeStr = `${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+        if (el) el.textContent = timeStr;
+        if (ctpEl) ctpEl.textContent = timeStr;
     }
 
     tick();
@@ -277,16 +281,21 @@ function updateTokenBar(rateLimit) {
 
     const fill = document.getElementById('token-bar-fill');
     const numbers = document.getElementById('token-numbers');
+    const ctpFill = document.getElementById('ctp-bar-fill');
 
-    if (!fill || !numbers) return;
+    const applyBar = (el) => {
+        if (!el) return;
+        el.style.width = pct + '%';
+        el.classList.remove('warning', 'danger');
+        if (pct >= 90) el.classList.add('danger');
+        else if (pct >= 65) el.classList.add('warning');
+    };
 
-    fill.style.width = pct + '%';
-    fill.classList.remove('warning', 'danger');
-    if (pct >= 90) fill.classList.add('danger');
-    else if (pct >= 65) fill.classList.add('warning');
+    applyBar(fill);
+    applyBar(ctpFill);
 
     const fmt = n => n >= 1000 ? (n / 1000).toFixed(0) + 'k' : n;
-    numbers.textContent = `${fmt(usedTokens)} / ${fmt(limitTokens)} tokens`;
+    if (numbers) numbers.textContent = `${fmt(usedTokens)} / ${fmt(limitTokens)} tokens`;
 }
 
 /* ==========================================
