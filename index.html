@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Botnation - AI-Driven Learning Suite | PE/OE HM FK09</title>
+    
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="FC Botnation ist eine interaktive KI-Plattform für Studierende des Wirtschaftsingenieurwesens an der HM. Trainiere deine Kompetenzen in Persönlichkeit, Teamarbeit, Change Management & Recruiting.">
+    <meta name="keywords" content="FC Botnation, Chatbot-Suite, PE/OE, Hochschule München, FK09, Wirtschaftsingenieurwesen, Change Management, Belbin Teamrollen, Kurt Lewin, Halo-Effekt, Big Five">
+    <meta name="author" content="Maximilian, Julius, Mieran, Agustin">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon Placeholders / Inline SVGs -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="layout-wrapper">
+
+        <!-- 1. STICKY NAVBAR -->
+        <nav class="navbar" id="main-navbar">
+            <div class="container">
+                <a href="#" class="nav-logo" id="brand-logo">
+                    <img src="images/logo.png" alt="FC Botnation Logo">
+                </a>
+                
+                <ul class="nav-links" id="navigation-menu">
+                    <li><a href="#module">KI-Module</a></li>
+                    <li><a href="#case">Fallstudie</a></li>
+                    <li><a href="#team">Das Team</a></li>
+                    <li><a href="https://github.com" target="_blank" rel="noopener">Dokumentation</a></li>
+                </ul>
+                
+                <div class="nav-cta">
+                    <a href="#module" class="btn btn-primary" id="navbar-cta" data-open-simulator>Simulator starten</a>
+                </div>
+
+                <button class="nav-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- 2. HERO SECTION -->
+        <section class="hero" id="hero-section">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content reveal">
+                        <span class="hero-tag">🤖 KI-GESTÜTZTES LERNEN FÜR WIRTSCHAFTSINGENIEURE</span>
+                        <h1 class="hero-title">FC Botnation: Meistere die zwischenmenschliche Interaktion im Unternehmen</h1>
+                        <p class="hero-subtitle">Die perfekte Brücke zwischen technischem Fachwissen und Wirtschaftspsychologie. Trainiere deine Führungskompetenzen durch die Interaktion mit unseren spezialisierten KI-Bots.</p>
+                        <div class="hero-ctas">
+                            <a href="#module" class="btn btn-primary btn-pulse-glow" id="hero-primary-cta" data-open-simulator>Simulation beginnen</a>
+                            <a href="#case" class="btn btn-secondary" id="hero-secondary-cta">Studienplan ansehen</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual-wrapper reveal">
+                        <img src="images/hero_visual.png" alt="Holografische 3D Sphäre" class="hero-visual" id="hero-interactive-visual">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SOCIAL PROOF & METRIKEN -->
+        <section class="social-proof reveal" id="metrics-section">
+            <div class="container">
+                <div class="metrics-grid">
+                    <div class="metric-card" id="metric-modules">
+                        <div class="metric-number"><span class="counter" data-target="4" data-float="false">0</span></div>
+                        <div class="metric-label">Core-Module (PE/OE Skript)</div>
+                    </div>
+                    <div class="metric-card" id="metric-uptime">
+                        <div class="metric-number"><span class="counter" data-target="99.9" data-float="true">0</span>%</div>
+                        <div class="metric-label">Uptime der KI-Simulatoren</div>
+                    </div>
+                    <div class="metric-card" id="metric-simulations">
+                        <div class="metric-number"><span class="counter" data-target="500" data-float="false">0</span>+</div>
+                        <div class="metric-label">Erfolgreiche Simulationen</div>
+                    </div>
+                    <div class="metric-card" id="metric-aligned">
+                        <div class="metric-number"><span class="counter" data-target="100" data-float="false">0</span>%</div>
+                        <div class="metric-label">HM FK09 Aligned</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. INTERAKTIVE LERNMODULE -->
+        <section class="modules reveal" id="module">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Trainings-Umgebung</span>
+                    <h2 class="section-title">Interaktive KI-Lernmodule</h2>
+                    <p class="section-subtitle">Wähle eines der vier Kernmodule aus unserem PE/OE-Lehrplan, um deine personalen und organisationalen Führungsszenarien in Echtzeit zu trainieren.</p>
+                </div>
+                
+                <div class="modules-grid stagger-container">
+                    
+                    <!-- CARD 1 -->
+                    <div class="module-card reveal reveal-child" id="module-card-1">
+                        <div class="module-card-inner">
+                            <div class="card-front">
+                                <div class="card-image-wrapper">
+                                    <img src="images/service_1.png" alt="Modul 1: Persönlichkeit & Selbstmanagement">
+                                </div>
+                                <div class="card-front-content">
+                                    <h3 class="card-front-title">
+                                        Persönlichkeit & Selbstmanagement
+                                        <span>Modul 01</span>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-back-header">
+                                    <p>01. Modul</p>
+                                    <h4>Persönlichkeit & Kommunikation</h4>
+                                </div>
+                                <p class="card-back-desc">Simuliere kritische Interaktionen basierend auf psychologischen Profilen. Entwickle Hypothesen über die Persönlichkeit von Führungskräften und passe deine strategische Kommunikation an.</p>
+                                <div class="card-back-tags">
+                                    <span class="tag">Big Five Analyse</span>
+                                    <span class="tag">Kommunikationskanäle</span>
+                                    <span class="tag">Mitarbeiter-Roleplay</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CARD 2 -->
+                    <div class="module-card reveal reveal-child" id="module-card-2">
+                        <div class="module-card-inner">
+                            <div class="card-front">
+                                <div class="card-image-wrapper">
+                                    <img src="images/service_2.png" alt="Modul 2: Motivation & Teamarbeit">
+                                </div>
+                                <div class="card-front-content">
+                                    <h3 class="card-front-title">
+                                        Motivation & Teamarbeit
+                                        <span>Modul 02</span>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-back-header">
+                                    <p>02. Modul</p>
+                                    <h4>Gruppendynamik & High-Performance</h4>
+                                </div>
+                                <p class="card-back-desc">Interviewe virtuelle Führungskräfte, um Teamdysfunktionen aufzudecken. Lerne, die 9 Teamrollen nach Belbin auszubalancieren und Risiken wie Groupthink in der Automobilindustrie zu minimieren.</p>
+                                <div class="card-back-tags">
+                                    <span class="tag">Belbin Teamrollen</span>
+                                    <span class="tag">Psychological Safety</span>
+                                    <span class="tag">Groupthink-Vermeidung</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CARD 3 -->
+                    <div class="module-card reveal reveal-child" id="module-card-3">
+                        <div class="module-card-inner">
+                            <div class="card-front">
+                                <div class="card-image-wrapper">
+                                    <img src="images/service_3.png" alt="Modul 3: Organisationsentwicklung">
+                                </div>
+                                <div class="card-front-content">
+                                    <h3 class="card-front-title">
+                                        Organisationsentwicklung
+                                        <span>Modul 03</span>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-back-header">
+                                    <p>03. Modul</p>
+                                    <h4>Organisationsentwicklung & Change</h4>
+                                </div>
+                                <p class="card-back-desc">Präsentiere strategische Restrukturierungskonzepte vor einem virtuellen Vorstand. Wende das Drei-Phasen-Modell von Kurt Lewin an und verteidige Veränderungen gegen Widerstände in Echtzeit.</p>
+                                <div class="card-back-tags">
+                                    <span class="tag">Lewin Change Modell</span>
+                                    <span class="tag">Widerstandsanalyse</span>
+                                    <span class="tag">Change Management</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CARD 4 -->
+                    <div class="module-card reveal reveal-child" id="module-card-4">
+                        <div class="module-card-inner">
+                            <div class="card-front">
+                                <div class="card-image-wrapper">
+                                    <img src="images/service_4.png" alt="Modul 4: Personalauswahl">
+                                </div>
+                                <div class="card-front-content">
+                                    <h3 class="card-front-title">
+                                        Personalauswahl (Recruiting)
+                                        <span>Modul 04</span>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-back-header">
+                                    <p>04. Modul</p>
+                                    <h4>Personalbeurteilung & Recruiting</h4>
+                                </div>
+                                <p class="card-back-desc">Konstruiere strukturierte Interviewleitfäden und evaluiere KI-simulierte Bewerber. Erkenne und minimiere kognitive Verzerrungen wie den Halo-Effekt, den Ähnlichkeitsfehler oder den Bestätigungsfehler.</p>
+                                <div class="card-back-tags">
+                                    <span class="tag">Strukturierte Interviews</span>
+                                    <span class="tag">Halo-Effekt Minimierung</span>
+                                    <span class="tag">KI-Recruiting</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. UNTERNEHMENSCASE SHOWCASE -->
+        <section class="case-study reveal" id="case">
+            <div class="container">
+                <div class="case-card">
+                    <div class="case-info">
+                        <span class="section-tag">Das Praxis-Szenario</span>
+                        <h3>Das Szenario: Restrukturierung eines Automobilzulieferers (OEM)</h3>
+                        <p>Unsere Bots agieren in einem einheitlichen Case: Ein Zulieferer steht unter striktem Kostendruck. Die Studierenden müssen Empathie, Überzeugungstechniken und Argumentationsstrukturen nutzen, um die Belegschaft zu überzeugen und die Transformation erfolgreich zu meistern.</p>
+                        
+                        <div class="case-features">
+                            <div class="case-feature-item">
+                                <div class="case-feature-icon">✓</div>
+                                <div class="case-feature-text">
+                                    <h5>Echtzeit Vorstands-Verteidigung</h5>
+                                    <p>Präsentiere deine Maßnahmen direkt vor dem virtuellen CEO des Automobilzulieferers.</p>
+                                </div>
+                            </div>
+                            <div class="case-feature-item">
+                                <div class="case-feature-icon">✓</div>
+                                <div class="case-feature-text">
+                                    <h5>Widerstands-Simulation</h5>
+                                    <p>Reagiere auf emotionale und rationale Blockaden der simulierten Belegschaft (Betriebsrat).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-visual-container">
+                        <!-- Simulated Chatbot UI -->
+                        <div class="case-code-mockup" id="chat-simulator">
+                            <div class="case-code-line"><span class="case-code-blue">[SYSTEM]</span> Initialisiere PE/OE-Szenario...</div>
+                            <div class="case-code-line"><span class="case-code-blue">[BOT - Dr. Wagner (CEO)]</span> "Guten Tag. Die Zahlen des letzten Quartals zwingen uns zum Handeln. 15% Stellenabbau in der Fertigung. Wie lautet Ihr Change-Konzept bezüglich Lewins Übergangsphase?"</div>
+                            <div class="case-code-line"><span class="case-code-gray">&gt; USER:</span> Wir müssen die emotionale Trauerphase auffangen und psychologische Sicherheit etablieren, indem wir Umschulungen anbieten...</div>
+                            <div class="case-code-line"><span class="case-code-blue">[BOT - Dr. Wagner (CEO)]</span> "Interessanter Ansatz. Doch wie finanzieren Sie diese Umschulungen unter aktuellem Cash-Flow-Mangel?"</div>
+                            <div class="case-code-line"><span class="case-code-blue">[KI-Feedback]</span> <span class="case-code-blue">✓</span> Lewin-Modell korrekt angewendet. <span class="case-code-gray">⚠</span> Argumentation zu Kostenstruktur optimierbar.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. DAS TEAM (ÜBER UNS) -->
+        <section class="about reveal" id="team">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image-wrapper">
+                        <img src="images/about_image.png" alt="FC Botnation Team" class="about-image" id="team-visual-image">
+                    </div>
+                    <div class="about-content">
+                        <span class="section-tag">Hinter dem Algorithmus</span>
+                        <h2>Team FC Botnation</h2>
+                        <p>Wir sind eine Gruppe angehender Wirtschaftsingenieure, die das menschliche Potenzial in Organisationen maximieren wollen. Entwickelt für das Modul Personal- und Organisationsentwicklung (PE/OE) an der HM (FK 09 Wirtschaftsingenieurwesen) von:</p>
+                        
+                        <div class="team-list">
+                            <div class="team-member" id="team-maximilian">
+                                <div class="member-avatar">M</div>
+                                <div class="member-info">
+                                    <h4>Maximilian</h4>
+                                    <p>Wirtschaftsingenieurwesen</p>
+                                </div>
+                            </div>
+                            <div class="team-member" id="team-julius">
+                                <div class="member-avatar">J</div>
+                                <div class="member-info">
+                                    <h4>Julius</h4>
+                                    <p>Wirtschaftsingenieurwesen</p>
+                                </div>
+                            </div>
+                            <div class="team-member" id="team-miera">
+                                <div class="member-avatar">M</div>
+                                <div class="member-info">
+                                    <h4>Mieran</h4>
+                                    <p>Wirtschaftsingenieurwesen</p>
+                                </div>
+                            </div>
+                            <div class="team-member" id="team-agustin">
+                                <div class="member-avatar">A</div>
+                                <div class="member-info">
+                                    <h4>Agustin</h4>
+                                    <p>Wirtschaftsingenieurwesen</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. FINALER CTA -->
+        <section class="final-cta reveal" id="final-cta-section">
+            <div class="container">
+                <div class="final-cta-content">
+                    <h2>Bereit, deine Führungskompetenzen herauszufordern?</h2>
+                    <p>Teste die interaktiven Szenarien von FC Botnation und erhalte sofortiges Feedback von unserer KI.</p>
+                    <a href="#module" class="btn btn-primary btn-pulse-glow" id="cta-bottom-button" data-open-simulator>Zugang zur virtuellen Lernumgebung</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FOOTER -->
+        <footer id="footer-section">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <h3>FC Botnation</h3>
+                        <p>AI-Driven Learning Suite für die Personal- und Organisationsentwicklung an der HM (FK09).</p>
+                        <div class="footer-socials">
+                            <a href="#" class="footer-social-icon" aria-label="LinkedIn">IN</a>
+                            <a href="#" class="footer-social-icon" aria-label="GitHub">GH</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>PE/OE Themen</h4>
+                        <ul>
+                            <li><a href="#module">Persönlichkeit</a></li>
+                            <li><a href="#module">Teamführung</a></li>
+                            <li><a href="#module">Change Management</a></li>
+                            <li><a href="#module">Personalauswahl</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Ressourcen</h4>
+                        <ul>
+                            <li><a href="https://moodle.hm.edu" target="_blank" rel="noopener">HM Moodle</a></li>
+                            <li><a href="https://ki-campus.org" target="_blank" rel="noopener">KI-Campus</a></li>
+                            <li><a href="https://www.hm.edu/fk09" target="_blank" rel="noopener">Fakultät 09 (HM)</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Rechtliches</h4>
+                        <ul>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Datenschutz</a></li>
+                            <li><a href="#">Nutzungsbedingungen</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2026 FC Botnation. Alle Rechte vorbehalten. Entwickelt für PE/OE HM FK 09.</p>
+                    <div class="footer-legal-links">
+                        <a href="#">Impressum</a>
+                        <a href="#">Datenschutz</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Chatbot Simulator Modal -->
+    <div class="chatbot-modal" id="chatbot-modal" role="dialog" aria-modal="true" aria-label="FC Botnation Simulator">
+        <div class="chatbot-overlay" id="chatbot-overlay"></div>
+        <div class="chatbot-window">
+
+            <!-- Header -->
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">
+                        <img src="images/logo.png" alt="FC Botnation">
+                    </div>
+                    <div class="chatbot-meta">
+                        <h3>Martina Weller <span style="font-weight:400;opacity:0.6;">– COO</span></h3>
+                        <span class="chatbot-status">
+                            <span class="status-dot"></span> Online · Kronberg Sitzsysteme GmbH
+                        </span>
+                    </div>
+                </div>
+                <button class="chatbot-close" id="chatbot-close" aria-label="Schließen">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- Briefing Screen -->
+            <div class="chatbot-briefing" id="chatbot-briefing">
+                <div class="briefing-icon">🏭</div>
+                <p class="briefing-module-label">Modul 02 · Teamarbeit &amp; High Performance Teams</p>
+                <h2 class="briefing-title">Teamszenario: Kronberg Sitzsysteme GmbH</h2>
+                <div class="briefing-sections">
+                    <div class="briefing-section">
+                        <div class="briefing-section-number">01</div>
+                        <div>
+                            <h4>Das Szenario</h4>
+                            <p>Du bist externer Berater bei Kronberg Sitzsysteme, einem Tier-1-Automobilzulieferer mitten im Restrukturierungsprogramm. Das ICTT-Team kämpft damit, ein High Performing Team zu werden.</p>
+                        </div>
+                    </div>
+                    <div class="briefing-section">
+                        <div class="briefing-section-number">02</div>
+                        <div>
+                            <h4>Deine Aufgabe</h4>
+                            <p>Interviewe <strong>Martina Weller</strong>, COO und Teamleiterin des ICTT. Finde durch gezielte Fragen heraus, was das Team davon abhält, ein High Performing Team zu werden.</p>
+                        </div>
+                    </div>
+                    <div class="briefing-section">
+                        <div class="briefing-section-number">03</div>
+                        <div>
+                            <h4>Nächstes Semester</h4>
+                            <p>Auf Basis deiner Erkenntnisse entwickelst du Interventionen und testest sie im Bot. Du erlebst, wie Martina Weller auf deine Vorschläge reagiert.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary briefing-start-btn" id="briefing-start">Starten</button>
+            </div>
+
+            <!-- Chat Area (hidden until Starten is clicked) -->
+            <div class="chatbot-chat-area" id="chatbot-chat-area">
+                <div class="chatbot-messages" id="chatbot-messages" role="log" aria-live="polite"></div>
+                <div class="chatbot-input-area">
+                    <div class="chatbot-input-wrapper">
+                        <textarea
+                            class="chatbot-input"
+                            id="chatbot-input"
+                            placeholder="Ihre Antwort eingeben… (Enter zum Senden)"
+                            rows="1"
+                            aria-label="Nachricht eingeben"
+                        ></textarea>
+                        <button class="chatbot-send" id="chatbot-send" aria-label="Senden">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="chatbot-disclaimer">KI-Simulation für Lernzwecke · PE/OE HM FK09 · Shift+Enter für Zeilenumbruch</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script Links -->
+    <script src="script.js"></script>
+</body>
+</html>
