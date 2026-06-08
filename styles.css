@@ -1148,6 +1148,13 @@ footer {
     padding: 0.3rem 0.7rem;
 }
 
+.ctp-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+}
+
 .ctp-bar-track {
     width: 60px;
     height: 3px;
