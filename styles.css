@@ -1556,6 +1556,117 @@ footer {
     opacity: 0.5;
 }
 
+/* End-Conversation Confirmation Box */
+.end-conv-box {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--bg-tertiary);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 14px;
+    padding: 1rem 1.5rem;
+    animation: msg-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.end-conv-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.end-conv-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.end-conv-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    font-weight: 700;
+}
+
+.end-conv-confirm {
+    background: rgba(74, 222, 128, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.end-conv-confirm:hover {
+    background: rgba(74, 222, 128, 0.25);
+    transform: scale(1.1);
+}
+
+.end-conv-cancel {
+    background: rgba(248, 113, 113, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.end-conv-cancel:hover {
+    background: rgba(248, 113, 113, 0.22);
+    transform: scale(1.1);
+}
+
+/* Feedback Message */
+.feedback-message {
+    align-self: stretch;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.06) 0%, rgba(24, 24, 27, 0.8) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 14px;
+    overflow: hidden;
+    animation: msg-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    margin-top: 0.5rem;
+}
+
+.feedback-header {
+    background: rgba(59, 130, 246, 0.1);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary-400);
+}
+
+.feedback-body {
+    padding: 1rem;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+.feedback-body strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.feedback-body li {
+    list-style: none;
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.25rem;
+}
+
+.feedback-body li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-400);
+}
+
 /* Chatbot Responsive */
 @media (max-width: 768px) {
     .chatbot-modal {

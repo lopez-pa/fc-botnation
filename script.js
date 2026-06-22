@@ -322,6 +322,8 @@ function initChatbotModal() {
     const conversationHistory = [];
     let isLoading = false;
     let chatStarted = false;
+    let conversationEnded = false;
+    let endConvBox = null;
 
     function openModal() {
         modal.classList.add('is-open');
@@ -368,7 +370,7 @@ function initChatbotModal() {
 
     async function sendMessage() {
         const text = input.value.trim();
-        if (!text || isLoading) return;
+        if (!text || isLoading || conversationEnded) return;
 
         addUserMessage(text);
         conversationHistory.push({ role: 'user', content: text });
@@ -400,10 +402,17 @@ function initChatbotModal() {
             }
 
             const data = await response.json();
-            const content = data.content || '';
-            conversationHistory.push({ role: 'assistant', content });
-            addBotMessage(content, BOT_ICON);
+            let content = data.content || '';
+
+            const END_TAG = '[GESPRÄCH_BEENDEN]';
+            const hasEndTag = content.includes(END_TAG);
+            const cleanContent = content.replace(END_TAG, '').trimEnd();
+
+            conversationHistory.push({ role: 'assistant', content: cleanContent });
+            addBotMessage(cleanContent, BOT_ICON);
             if (data.rateLimit) updateTokenBar(data.rateLimit);
+
+            if (hasEndTag) showEndConvBox();
 
         } catch (err) {
             typingEl.remove();
@@ -487,5 +496,81 @@ function initChatbotModal() {
         const div = document.createElement('div');
         div.appendChild(document.createTextNode(text));
         return div.innerHTML;
+    }
+
+    function showEndConvBox() {
+        if (endConvBox) return;
+        endConvBox = document.createElement('div');
+        endConvBox.className = 'end-conv-box';
+        endConvBox.innerHTML = `
+            <p class="end-conv-label">Gespräch beenden?</p>
+            <div class="end-conv-actions">
+                <button class="end-conv-btn end-conv-confirm" title="Beenden">✓</button>
+                <button class="end-conv-btn end-conv-cancel" title="Fortfahren">✗</button>
+            </div>`;
+        messagesContainer.appendChild(endConvBox);
+        scrollToBottom();
+
+        endConvBox.querySelector('.end-conv-confirm').addEventListener('click', requestFeedback);
+        endConvBox.querySelector('.end-conv-cancel').addEventListener('click', dismissEndConvBox);
+    }
+
+    function dismissEndConvBox() {
+        if (endConvBox) {
+            endConvBox.remove();
+            endConvBox = null;
+        }
+        input.focus();
+    }
+
+    async function requestFeedback() {
+        if (endConvBox) { endConvBox.remove(); endConvBox = null; }
+        conversationEnded = true;
+        input.disabled = true;
+        sendBtn.disabled = true;
+        input.placeholder = 'Gespräch beendet.';
+
+        const typingEl = showTypingIndicator();
+        const feedbackMsg = { role: 'user', content: 'FEEDBACK_ANFRAGE' };
+
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: [...conversationHistory, feedbackMsg] })
+            });
+
+            typingEl.remove();
+
+            if (!response.ok) {
+                addErrorMessage('Feedback konnte nicht geladen werden.');
+                return;
+            }
+
+            const data = await response.json();
+            addFeedbackMessage(data.content || '');
+            if (data.rateLimit) updateTokenBar(data.rateLimit);
+
+        } catch {
+            typingEl.remove();
+            addErrorMessage('Verbindungsfehler beim Laden des Feedbacks.');
+        }
+    }
+
+    function addFeedbackMessage(text) {
+        const el = document.createElement('div');
+        el.className = 'feedback-message';
+
+        const escaped = escapeHtml(text);
+        const html = escaped
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/^[•\-] (.+)$/gm, '<li>$1</li>')
+            .replace(/\n/g, '<br>');
+
+        el.innerHTML = `
+            <div class="feedback-header">📋 Feedback &amp; Bewertung</div>
+            <div class="feedback-body">${html}</div>`;
+        messagesContainer.appendChild(el);
+        scrollToBottom();
     }
 }
