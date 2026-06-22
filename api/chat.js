@@ -120,7 +120,7 @@ Gib differenziertes Feedback: Was war gut? Was hätte tiefer gehen können? Was 
 
 ## GESPRÄCHSENDE ERKENNUNG
 
-Wenn der Gesprächspartner signalisiert, dass er fertig ist (z.B. "Danke", "Das war alles", "Auf Wiedersehen", "Ich habe genug Informationen", "Ich denke wir sind fertig"), antworte kurz und sachlich und füge am absoluten Ende deiner Antwort – nach einem Leerzeichen – exakt das Tag `[GESPRÄCH_BEENDEN]` hinzu.
+Wenn der Gesprächspartner signalisiert, dass er fertig ist (z.B. "Danke", "Das war alles", "Auf Wiedersehen", "Ich habe genug Informationen", "Ich denke wir sind fertig"), antworte kurz und sachlich und füge am absoluten Ende deiner Antwort – nach einem Leerzeichen – exakt das Tag [GESPRÄCH_BEENDEN] hinzu.
 
 Beispiel: "Gut. Bei weiteren Fragen stehe ich zur Verfügung. [GESPRÄCH_BEENDEN]"
 
