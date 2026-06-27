@@ -503,9 +503,9 @@ function initChatbotModal() {
         endConvBox = document.createElement('div');
         endConvBox.className = 'end-conv-box';
         endConvBox.innerHTML = `
-            <p class="end-conv-label">Gespräch beenden?</p>
+            <p class="end-conv-label">Gespräch beenden &amp; Bewertung erhalten?</p>
             <div class="end-conv-actions">
-                <button class="end-conv-btn end-conv-confirm" title="Beenden">✓</button>
+                <button class="end-conv-btn end-conv-confirm" title="Beenden &amp; Bewertung">✓</button>
                 <button class="end-conv-btn end-conv-cancel" title="Fortfahren">✗</button>
             </div>`;
         messagesContainer.appendChild(endConvBox);
