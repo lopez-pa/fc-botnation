@@ -316,7 +316,7 @@ function initChatbotModal() {
     if (!modal) return;
 
     const BOT_ICON = '👩‍💼';
-    const BOT_OPENING = 'Weller. Guten Tag. Ich habe heute noch drei Meetings, also nutzen Sie die Zeit gut. Was möchten Sie wissen?';
+    const BOT_OPENING = 'Weller. Guten Tag. Ich bin Martina Weller, COO der Kronberg Sitzsysteme GmbH – ein Tier-1-Automobilzulieferer mit über 1.500 Mitarbeitenden, spezialisiert auf Sitzsysteme für Audi, BMW und Mercedes-Benz. Derzeit führe ich das ICTT, unser internes Team für Verbesserungs- und Kostentransformation, mitten in unserem Restrukturierungsprogramm Fokus26. Ich habe heute noch drei Meetings, also nutzen Sie die Zeit gut – was möchten Sie wissen?';
 
     // Full conversation history sent to the API each turn
     const conversationHistory = [];
