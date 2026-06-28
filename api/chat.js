@@ -194,6 +194,8 @@ module.exports = async function handler(req, res) {
     if (!apiKey) return res.status(500).json({ error: 'Server misconfigured' });
 
     try {
+        const isFeedback = messages[messages.length - 1]?.content === 'FEEDBACK_ANFRAGE';
+
         const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -203,7 +205,7 @@ module.exports = async function handler(req, res) {
             body: JSON.stringify({
                 model: 'llama-3.3-70b-versatile',
                 messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
-                max_tokens: 500,
+                max_tokens: isFeedback ? 900 : 500,
                 temperature: 0.75
             })
         });

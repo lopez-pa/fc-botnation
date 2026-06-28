@@ -323,7 +323,6 @@ function initChatbotModal() {
     let isLoading = false;
     let chatStarted = false;
     let conversationEnded = false;
-    let endConvBox = null;
 
     function openModal() {
         modal.classList.add('is-open');
@@ -412,7 +411,7 @@ function initChatbotModal() {
             addBotMessage(cleanContent, BOT_ICON);
             if (data.rateLimit) updateTokenBar(data.rateLimit);
 
-            if (hasEndTag) showEndConvBox();
+            if (hasEndTag) requestFeedback();
 
         } catch (err) {
             typingEl.remove();
@@ -498,33 +497,7 @@ function initChatbotModal() {
         return div.innerHTML;
     }
 
-    function showEndConvBox() {
-        if (endConvBox) return;
-        endConvBox = document.createElement('div');
-        endConvBox.className = 'end-conv-box';
-        endConvBox.innerHTML = `
-            <p class="end-conv-label">Gespräch beenden &amp; Bewertung erhalten?</p>
-            <div class="end-conv-actions">
-                <button class="end-conv-btn end-conv-confirm" title="Beenden &amp; Bewertung">✓</button>
-                <button class="end-conv-btn end-conv-cancel" title="Fortfahren">✗</button>
-            </div>`;
-        messagesContainer.appendChild(endConvBox);
-        scrollToBottom();
-
-        endConvBox.querySelector('.end-conv-confirm').addEventListener('click', requestFeedback);
-        endConvBox.querySelector('.end-conv-cancel').addEventListener('click', dismissEndConvBox);
-    }
-
-    function dismissEndConvBox() {
-        if (endConvBox) {
-            endConvBox.remove();
-            endConvBox = null;
-        }
-        input.focus();
-    }
-
     async function requestFeedback() {
-        if (endConvBox) { endConvBox.remove(); endConvBox = null; }
         conversationEnded = true;
         input.disabled = true;
         sendBtn.disabled = true;
